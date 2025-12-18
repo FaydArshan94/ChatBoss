@@ -2,7 +2,7 @@ const User = require("../models/user.model");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 const { generateToken } = require("../lib/utils");
-const { cloudinary_js_config } = require("../lib/cloudinary");
+const cloudinary = require("../lib/cloudinary");
 
 async function register(req, res) {
   const { fullName, email, password } = req.body;
@@ -103,7 +103,7 @@ async function updateProfile(req, res) {
       return res.status(400).send("Profile picture is required");
     }
 
-    const uploadPicture = await cloudinary_js_config.uploader.upload(
+    const uploadPicture = await cloudinary.uploader.upload(
       profilePicture
     );
 
