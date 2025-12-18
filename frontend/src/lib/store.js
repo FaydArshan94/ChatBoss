@@ -3,7 +3,7 @@ import { api } from "./axios.jsx";
 import toast from "react-hot-toast";
 import { io } from "socket.io-client";
 
-const BASE_URL = "http://localhost:5000";
+const BASE_URL = import.meta.env.VITE_API_URL;
 
 export const useAuthStore = create((set, get) => ({
   authUser: null,
@@ -48,6 +48,7 @@ export const useAuthStore = create((set, get) => ({
       get().connectSocket();
     } catch (error) {
       console.error("Error logging in:", error);
+      toast.error(error.data.message)
     } finally {
       set({ isLoggingIn: false });
     }
