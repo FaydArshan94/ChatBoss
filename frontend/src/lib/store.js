@@ -3,7 +3,7 @@ import { api } from "./axios.jsx";
 import toast from "react-hot-toast";
 import { io } from "socket.io-client";
 
-const BASE_URL = import.meta.env.VITE_API_URL;
+const BASE_URL = "https://chatboss-production.up.railway.app/"
 
 export const useAuthStore = create((set, get) => ({
   authUser: null,
