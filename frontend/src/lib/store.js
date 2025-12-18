@@ -48,7 +48,7 @@ export const useAuthStore = create((set, get) => ({
       get().connectSocket();
     } catch (error) {
       console.error("Error logging in:", error);
-      toast.error(error.data.message)
+      toast.error(error.data)
     } finally {
       set({ isLoggingIn: false });
     }
